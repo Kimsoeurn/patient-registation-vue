@@ -7,7 +7,7 @@
       </router-link>
     </h2>
     <div class="form-patient">
-      <form action="">
+      <b-form>
         <fieldset>
           <legend>Patient Info</legend>
           <div class="row">
@@ -15,51 +15,54 @@
               <label for="health_id_card">
                 Health ID Card <span class="text-danger">*</span>
               </label>
-              <input type="text" class="form-control" id="health_id_card" />
+              <b-input type="text" id="health_id_card" />
             </div>
             <div class="form-group col-lg-4">
               <label for="name_khmer">
                 Name Khmer <span class="text-danger">*</span>
               </label>
-              <input type="text" class="form-control" id="name_khmer" />
+              <b-input type="text" id="name_khmer" />
             </div>
             <div class="form-group col-lg-4">
               <label for="name_english">
                 Name English <span class="text-danger">*</span>
               </label>
-              <input type="text" class="form-control" id="name_english" />
+              <b-input type="text" id="name_english" />
             </div>
           </div>
           <div class="row">
             <div class="form-group col-lg-4">
-              <label for="health_id_card">
+              <label for="gender">
                 Gender <span class="text-danger">*</span>
               </label>
-              <select name="gender" id="gender" class="form-control">
-                <option>Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
+              <b-form-select
+                v-model="gender"
+                :options="genderOptions"
+                id="gender"
+              >
+              </b-form-select>
             </div>
             <div class="form-group col-lg-4">
               <label for="nationality">
                 Nationality <span class="text-danger">*</span>
               </label>
-              <select name="gender" id="nationality" class="form-control">
-                <option>Select Nationality</option>
-                <option value="khmer">Khmer</option>
-                <option value="khmer">Other</option>
-              </select>
+              <b-form-select
+                v-model="nationality"
+                :options="nationalities"
+                id="nationality"
+              >
+              </b-form-select>
             </div>
             <div class="form-group col-lg-4">
               <label for="occupation">
                 Occupation <span class="text-danger">*</span>
               </label>
-              <select name="gender" id="occupation" class="form-control">
-                <option>Select Occupation</option>
-                <option value="job_title_1">Job Title 1</option>
-                <option value="job_title_2">Job Title 2</option>
-              </select>
+              <b-form-select
+                v-model="occupation"
+                :options="occupations"
+                id="occupation"
+              >
+              </b-form-select>
             </div>
           </div>
           <div class="row">
@@ -73,10 +76,12 @@
             </div>
             <div class="form-group col-lg-4">
               <label for="is_disabled">Is Disabled?</label>
-              <select name="is_disable" id="is_disabled" class="form-control">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-              </select>
+              <b-form-select
+                v-model="is_disabled"
+                :options="disables"
+                id="is_disabled"
+              >
+              </b-form-select>
             </div>
           </div>
           <div class="row">
@@ -122,7 +127,7 @@
         <b-button variant="danger">
           <b-icon icon="x-circle"></b-icon> Cancel
         </b-button>
-      </form>
+      </b-form>
     </div>
   </div>
 </template>
@@ -130,6 +135,33 @@
 <script>
 export default {
   name: 'PatientCreate',
+  data() {
+    return {
+      gender: null,
+      nationality: null,
+      occupation: null,
+      is_disabled: 0,
+      genderOptions: [
+        { value: null, text: 'Select Gender' },
+        { value: 'male', text: 'Male' },
+        { value: 'female', text: 'Female' },
+      ],
+      nationalities: [
+        { value: null, text: 'Select Nationality' },
+        { value: 'khmer', text: 'Khmer' },
+        { value: 'other', text: 'Other' },
+      ],
+      occupations: [
+        { value: null, text: 'Select Occupation' },
+        { value: 'job_title', text: 'Job Title' },
+        { value: 'job_title_2', text: 'Job Title 2' },
+      ],
+      disables: [
+        { value: 0, text: 'No' },
+        { value: 1, text: 'Yes' },
+      ],
+    }
+  },
 }
 </script>
 
