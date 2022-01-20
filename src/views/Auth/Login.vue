@@ -4,13 +4,13 @@
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <b-form-group id="email-group">
         <label for="email"> Email <span class="text-danger">*</span> </label>
-        <b-form-input id="email" type="email" required> </b-form-input>
+        <b-form-input id="email" type="email" required />
       </b-form-group>
       <b-form-group id="password-group">
         <label for="password">
           Password <span class="text-danger">*</span>
         </label>
-        <b-form-input id="password" type="password" required> </b-form-input>
+        <b-form-input id="password" type="password" required />
       </b-form-group>
       <div class="checkbox mb-3">
         <label>
