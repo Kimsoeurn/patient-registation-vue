@@ -1,0 +1,27 @@
+{
+  "kh": "ភាសាខ្មែរ",
+  "en": "English",
+  "application_name": "ប្រព័ន្ធគ្រប់គ្រងការចុះឈ្មោះអ្នកជំងឺ",
+  "application_detail": "Simple Patient Registration Mangement System, Build Using VueJs Front-end and Back-end using Laravel",
+  "navbar": {
+    "home": "ទំព័រដើម",
+    "patients": "អ្នកជំងឺ",
+    "user": "អ្នកប្រើប្រាស់"
+  },
+  "auth": {
+    "login": "ចូលប្រើប្រាស់",
+    "register": "ចុះឈ្មោះចូលប្រើប្រាស់",
+    "please_sign_in": "សូមបំពេញពត៍មាន",
+    "email": "អ៊ីមែល",
+    "password": "លេខសំងាត់",
+    "sign_in": "ចូលប្រើប្រាស់",
+    "remember_me": "ចងចាំខ្ញុំ?"
+  },
+  "app": {
+    "create": "បង្កើតថ្មី",
+    "add": "បន្ថែមថ្មី",
+    "edit": "កែប្រែ",
+    "delete": "លុប",
+    "show": "បង្ហាញ"
+  }
+}
