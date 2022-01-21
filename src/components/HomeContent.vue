@@ -1,15 +1,14 @@
 <template>
   <div>
-    <b-jumbotron header="PMRS" lead="Patient Registration Management System">
+    <b-jumbotron header="PMRS" :lead="$t('application_name')">
       <p>
-        Simple Single Page Application Using VueJs Front-end and Laravel
-        Back-end Restful API.
+        {{ $t('application_detail') }}
       </p>
       <router-link to="/login" class="btn btn-success mr-1">
-        <b-icon icon="person"></b-icon> Login
+        <b-icon icon="person"></b-icon> {{ $t('auth.login') }}
       </router-link>
       <router-link to="/register" class="btn btn-primary">
-        <b-icon icon="person-plus"></b-icon> Register
+        <b-icon icon="person-plus"></b-icon> {{ $t('auth.register') }}
       </router-link>
     </b-jumbotron>
   </div>

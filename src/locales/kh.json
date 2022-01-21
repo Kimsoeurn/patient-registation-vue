@@ -1,0 +1,56 @@
+{
+  "kh": "ភាសាខ្មែរ",
+  "en": "English",
+  "application_name": "ប្រព័ន្ធគ្រប់គ្រងការចុះឈ្មោះអ្នកជំងឺ",
+  "application_detail": "Simple Patient Registration Mangement System, Build Using VueJs Front-end and Back-end using Laravel",
+  "navbar": {
+    "home": "ទំព័រដើម",
+    "patients": "អ្នកជំងឺ",
+    "user": "អ្នកប្រើប្រាស់"
+  },
+  "auth": {
+    "login": "ចូលប្រើប្រាស់",
+    "register": "ចុះឈ្មោះចូលប្រើប្រាស់",
+    "please_sign_in": "សូមបំពេញពត៍មាន",
+    "email": "អ៊ីមែល",
+    "password": "លេខសំងាត់",
+    "sign_in": "ចូលប្រើប្រាស់",
+    "remember_me": "ចងចាំខ្ញុំ?",
+    "form_register": "ទំរង់បង្កើតគណនី",
+    "name": "ឈ្មោះ",
+    "password_confirm": "លេខសំងាត់បញ្ជាក់",
+    "create_account": "បង្កើតគណនី"
+  },
+  "app": {
+    "id": "ល.រ",
+    "create": "បង្កើតថ្មី",
+    "add": "បន្ថែមថ្មី",
+    "edit": "កែប្រែ",
+    "delete": "លុប",
+    "show": "បង្ហាញ",
+    "save": "រក្សាទុក",
+    "cancel": "បោះបង់",
+    "go_back": "ត្រលប់ក្រោយ",
+    "no_result": "គ្មានទិន្ន័យ...",
+    "actions": "សកម្មភាព"
+  },
+  "patients": {
+    "patient_registration": "ទំរង់ចុះឈ្មោះអ្នកជំងឺ",
+    "patient_info": "ពត័មានអ្នកជំងឺ",
+    "health_id_card": "លេខប័ណ្ណ​សុខភាព",
+    "name_khmer": "ឈ្មោះ",
+    "name_english": "ឈ្មោះជាអក្សរឡាតាំង",
+    "gender": "ភេទ",
+    "nationalilty": "ជនជាតិ",
+    "occupation": "មុខរបរ",
+    "other_id_card": "ប័ណ្ណសម្គាល់ផ្សេងៗ",
+    "phone_number": "លេខទូរស័ព្ទ",
+    "is_disabled": "តើអ្នកពិការ?",
+    "remark": "កត់ចំណាំ",
+    "address": "អាសយដ្ឋាន",
+    "province": "ខេត្ត",
+    "distrcit": "ស្រុក",
+    "commune": "ឃុំ",
+    "village": "ភូមិ"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "kh": "ភាសាខ្មែរ",
+  "en": "English",
+  "application_name": "Patient Registration Management System",
+  "application_detail": "Simple Patient Registration Mangement System, Build Using VueJs Front-end and Back-end using Laravel",
+  "navbar": {
+    "home": "Home",
+    "patients": "Paitnets",
+    "user": "User"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "please_sign_in": "Plase Enter your inof",
+    "email": "Email",
+    "password": "Password",
+    "sign_in": "Password Confirm",
+    "remember_me": "Remember Me",
+    "form_register": "Form Register",
+    "name": "Name",
+    "password_confirm": "Password Confirmation",
+    "create_account": "Create Account"
+  },
+  "app": {
+    "id": "ID",
+    "create": "Create",
+    "add": "Add New",
+    "edit": "Edit",
+    "delete": "Delete",
+    "show": "Show",
+    "save": "Save",
+    "cancel": "Cancel",
+    "go_back": "Go Back",
+    "no_result": "No Result...",
+    "actions": "Actins"
+  },
+  "patients": {
+    "patient_registration": "Patient Registration",
+    "patient_info": "Patient Info",
+    "health_id_card": "Health ID Card",
+    "name_khmer": "Name Khmer",
+    "name_english": "Name English",
+    "gender": "Gender",
+    "nationalilty": "Nationality",
+    "occupation": "Occupation",
+    "other_id_card": "Other ID Card",
+    "phone_number": "Phone Number",
+    "is_disabled": "Is Disabled?",
+    "remark": "Remark",
+    "address": "Address",
+    "province": "Province",
+    "distrcit": "Disctict",
+    "commune": "Commune",
+    "village": "Village"
+  }
+}
