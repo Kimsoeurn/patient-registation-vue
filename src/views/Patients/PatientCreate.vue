@@ -1,5 +1,5 @@
 <template>
-  <div class="container my-3">
+  <div class="container-fluid my-3">
     <h2>
       {{ $t('patients.patient_registration') }}
       <router-link to="/patients" class="btn btn-secondary float-right">

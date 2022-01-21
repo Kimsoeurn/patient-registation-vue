@@ -41,6 +41,7 @@
     "name_khmer": "ឈ្មោះ",
     "name_english": "ឈ្មោះជាអក្សរឡាតាំង",
     "gender": "ភេទ",
+    "date_of_birth": "ថ្ងៃខែឆ្នាំកំណើត",
     "nationalilty": "ជនជាតិ",
     "occupation": "មុខរបរ",
     "other_id_card": "ប័ណ្ណសម្គាល់ផ្សេងៗ",
@@ -49,7 +50,7 @@
     "remark": "កត់ចំណាំ",
     "address": "អាសយដ្ឋាន",
     "province": "ខេត្ត",
-    "distrcit": "ស្រុក",
+    "district": "ស្រុក",
     "commune": "ឃុំ",
     "village": "ភូមិ"
   }
