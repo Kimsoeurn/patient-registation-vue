@@ -8,15 +8,18 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <li class="nav-item">
-              <router-link to="/" class="nav-link">Home</router-link>
+              <router-link to="/" class="nav-link">
+                {{ $t('navbar.home') }}
+              </router-link>
             </li>
             <li class="nav-item">
               <router-link to="/patients" class="nav-link">
-                Patients
+                {{ $t('navbar.patients') }}
               </router-link>
             </li>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
+            <language></language>
             <b-nav-item-dropdown right>
               <!-- Using 'button-content' slot -->
               <template #button-content>User</template>
@@ -31,7 +34,12 @@
 </template>
 
 <script>
+import Language from './Language.vue'
+
 export default {
   name: 'Navbar',
+  components: {
+    Language,
+  },
 }
 </script>

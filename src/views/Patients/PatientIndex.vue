@@ -1,25 +1,25 @@
 <template>
   <div class="container-fluid mt-3">
     <h2>
-      Patients
+      {{ $t('navbar.patients') }}
       <router-link to="/patients/create" class="btn btn-primary float-right">
-        <b-icon icon="plus"></b-icon> Add New
+        <b-icon icon="plus"></b-icon> {{ $t('app.add') }}
       </router-link>
     </h2>
     <div>
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name Khmer</th>
-            <th>Name English</th>
-            <th>Gender</th>
-            <th>Actions</th>
+            <th>{{ $t('app.id') }}</th>
+            <th>{{ $t('patients.name_khmer') }}</th>
+            <th>{{ $t('patients.name_english') }}</th>
+            <th>{{ $t('patients.gender') }}</th>
+            <th>{{ $t('app.actions') }}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td colspan="5">No Reslult...</td>
+            <td colspan="5">{{ $t('app.no_result') }}</td>
           </tr>
         </tbody>
       </table>

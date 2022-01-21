@@ -1,24 +1,27 @@
 <template>
   <div class="container my-3">
     <b-form :class="['form-signin']">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h3>{{ $t('auth.please_sign_in') }}</h3>
       <b-form-group id="email-group">
-        <label for="email"> Email <span class="text-danger">*</span> </label>
+        <label for="email">
+          {{ $t('auth.email') }} <span class="text-danger">*</span>
+        </label>
         <b-form-input id="email" type="email" required />
       </b-form-group>
       <b-form-group id="password-group">
         <label for="password">
-          Password <span class="text-danger">*</span>
+          {{ $t('auth.password') }} <span class="text-danger">*</span>
         </label>
         <b-form-input id="password" type="password" required />
       </b-form-group>
       <div class="checkbox mb-3">
         <label>
-          <input type="checkbox" value="remember-me" /> Remember me
+          <input type="checkbox" value="remember-me" />
+          {{ $t('auth.remember_me') }}
         </label>
       </div>
       <b-button variant="primary" :class="['btn-block']" type="submit">
-        Sign in
+        {{ $t('auth.sign_in') }}
       </b-button>
     </b-form>
   </div>
