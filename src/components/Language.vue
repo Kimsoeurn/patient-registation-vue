@@ -6,13 +6,13 @@
         href="#"
         @click="handleChange('kh')"
         v-show="lang == 'en'"
-        >Khmer</b-dropdown-item
+        >{{ $t('kh') }}</b-dropdown-item
       >
       <b-dropdown-item
         href="#"
         @click="handleChange('en')"
         v-show="lang == 'kh'"
-        >English</b-dropdown-item
+        >{{ $t('en') }}</b-dropdown-item
       >
     </b-nav-item-dropdown>
   </div>

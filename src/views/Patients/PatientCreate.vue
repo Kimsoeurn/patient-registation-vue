@@ -1,31 +1,34 @@
 <template>
   <div class="container my-3">
     <h2>
-      Patient Registration
+      {{ $t('patients.patient_registration') }}
       <router-link to="/patients" class="btn btn-secondary float-right">
-        <b-icon icon="arrow90deg-left"></b-icon> Go Back
+        <b-icon icon="arrow90deg-left"></b-icon> {{ $t('app.go_back') }}
       </router-link>
     </h2>
     <div class="form-patient">
       <b-form>
         <fieldset>
-          <legend>Patient Info</legend>
+          <legend>{{ $t('patients.patient_info') }}</legend>
           <div class="row">
             <div class="form-group col-lg-4">
               <label for="health_id_card">
-                Health ID Card <span class="text-danger">*</span>
+                {{ $t('patients.health_id_card') }}
+                <span class="text-danger">*</span>
               </label>
               <b-input type="text" id="health_id_card" />
             </div>
             <div class="form-group col-lg-4">
               <label for="name_khmer">
-                Name Khmer <span class="text-danger">*</span>
+                {{ $t('patients.name_khmer') }}
+                <span class="text-danger">*</span>
               </label>
               <b-input type="text" id="name_khmer" />
             </div>
             <div class="form-group col-lg-4">
               <label for="name_english">
-                Name English <span class="text-danger">*</span>
+                {{ $t('patients.name_english') }}
+                <span class="text-danger">*</span>
               </label>
               <b-input type="text" id="name_english" />
             </div>
@@ -33,7 +36,8 @@
           <div class="row">
             <div class="form-group col-lg-4">
               <label for="gender">
-                Gender <span class="text-danger">*</span>
+                {{ $t('patients.gender') }}
+                <span class="text-danger">*</span>
               </label>
               <b-form-select
                 v-model="gender"
@@ -44,7 +48,8 @@
             </div>
             <div class="form-group col-lg-4">
               <label for="nationality">
-                Nationality <span class="text-danger">*</span>
+                {{ $t('patients.nationalilty') }}
+                <span class="text-danger">*</span>
               </label>
               <b-form-select
                 v-model="nationality"
@@ -55,7 +60,8 @@
             </div>
             <div class="form-group col-lg-4">
               <label for="occupation">
-                Occupation <span class="text-danger">*</span>
+                {{ $t('patients.occupation') }}
+                <span class="text-danger">*</span>
               </label>
               <b-form-select
                 v-model="occupation"
@@ -67,15 +73,19 @@
           </div>
           <div class="row">
             <div class="form-group col-lg-4">
-              <label for="other_id_card">Other ID Card</label>
+              <label for="other_id_card">
+                {{ $t('patients.other_id_card') }}
+              </label>
               <input type="text" class="form-control" id="other_id_card" />
             </div>
             <div class="form-group col-lg-4">
-              <label for="phone_number">Phone Number</label>
+              <label for="phone_number">
+                {{ $t('patients.phone_number') }}
+              </label>
               <input type="text" class="form-control" id="phone_number" />
             </div>
             <div class="form-group col-lg-4">
-              <label for="is_disabled">Is Disabled?</label>
+              <label for="is_disabled">{{ $t('patients.is_disabled') }}</label>
               <b-form-select
                 v-model="is_disabled"
                 :options="disables"
@@ -86,35 +96,35 @@
           </div>
           <div class="row">
             <div class="form-group col-lg-12">
-              <label for="remark">Remark</label>
+              <label for="remark">{{ $t('patients.remark') }}</label>
               <textarea name="remark" id="remark" rows="2" class="form-control">
               </textarea>
             </div>
           </div>
         </fieldset>
         <fieldset>
-          <legend>Address</legend>
+          <legend>{{ $t('patients.address') }}</legend>
           <div class="row">
             <div class="form-group col-lg-6">
-              <label for="province_id">Province</label>
+              <label for="province_id">{{ $t('patients.province') }}</label>
               <select name="province_id" id="province_id" class="form-control">
                 <option value="">Select Province</option>
               </select>
             </div>
             <div class="form-group col-lg-6">
-              <label for="district_id">District</label>
+              <label for="district_id">{{ $t('patients.district') }}</label>
               <select name="district_id" id="district_id" class="form-control">
                 <option value="">Select District</option>
               </select>
             </div>
             <div class="form-group col-lg-6">
-              <label for="commune_id">Commune</label>
+              <label for="commune_id">{{ $t('patients.commune') }}</label>
               <select name="commune_id" id="commune_id" class="form-control">
                 <option value="">Select Commune</option>
               </select>
             </div>
             <div class="form-group col-lg-6">
-              <label for="village_id">Village</label>
+              <label for="village_id">{{ $t('patients.village') }}</label>
               <select name="village_id" id="village_id" class="form-control">
                 <option value="">Select Village</option>
               </select>
@@ -122,10 +132,10 @@
           </div>
         </fieldset>
         <b-button variant="primary" :class="['mr-1']">
-          <b-icon icon="check-circle"></b-icon> Save
+          <b-icon icon="check-circle"></b-icon> {{ $t('app.save') }}
         </b-button>
         <b-button variant="danger">
-          <b-icon icon="x-circle"></b-icon> Cancel
+          <b-icon icon="x-circle"></b-icon> {{ $t('app.cancel') }}
         </b-button>
       </b-form>
     </div>
