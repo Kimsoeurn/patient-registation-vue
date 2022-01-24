@@ -43,7 +43,7 @@
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import VuetablePagination from '../PaginationB4.vue'
 import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
-import FieldsDef from '../../FieldsDef'
+import FieldsDef from './FieldsDef'
 import cssConfig from './CssBootsrap4'
 
 export default {

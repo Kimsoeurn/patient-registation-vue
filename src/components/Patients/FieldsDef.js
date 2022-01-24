@@ -45,10 +45,13 @@ export default (i18n) => {
       titleClass: 'center aligned',
       dataClass: 'center aligned',
       width: '15%',
+      formatter(value) {
+        return value === 'male' ? 'Male' : 'Female'
+      },
     },
     {
       name: 'actions',
-      title: 'Actions',
+      title: i18n.t('app.actions'),
       titleClass: 'center aligned',
       dataClass: 'right aligned',
       width: '10%',
