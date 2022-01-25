@@ -1,10 +1,13 @@
 <template>
   <div>
     <div class="form-patient">
-      {{ submitStatus }}
       <ul>
-        <li v-for="err in errorsMsg" :key="err.message" class="text-danger">
-          {{ err[0] }}
+        <li
+          v-for="error in validationErrors"
+          :key="error.message"
+          class="text-danger"
+        >
+          {{ error[0] }}
         </li>
       </ul>
       <b-form method="POST" @submit.prevent="save()" id="form-patient">
@@ -245,7 +248,7 @@ export default {
   name: 'FormPatient',
   data() {
     return {
-      errorsMsg: null,
+      validationErrors: null,
       provinces: [],
       form: {
         health_id_card: '',
@@ -285,7 +288,6 @@ export default {
       district_id: null,
       commune_id: null,
       village_id: null,
-      submitStatus: null,
     }
   },
   validations: {
@@ -343,13 +345,11 @@ export default {
             }
           })
           .catch((e) => {
-            console.log(e)
+            let errors = e.response.data['errors']
+            if (errors) {
+              this.validationErrors = errors
+            }
           })
-
-        this.submitStatus = 'PENDING'
-        setTimeout(() => {
-          this.submitStatus = 'OK'
-        }, 500)
       }
     },
     reset() {
