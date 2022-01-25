@@ -182,53 +182,7 @@
             </div>
           </div>
         </fieldset>
-        <fieldset>
-          <legend>{{ $t('patients.address') }}</legend>
-          <div class="row">
-            <div class="form-group col-lg-6">
-              <label for="province_id">{{ $t('patients.province') }}</label>
-              <b-form-select
-                v-model="province_id"
-                :options="provinces"
-                id="province_id"
-              >
-              </b-form-select>
-            </div>
-            <div class="form-group col-lg-6">
-              <label for="district_id">{{ $t('patients.district') }}</label>
-              <select
-                v-model="district_id"
-                name="district_id"
-                id="district_id"
-                class="form-control"
-              >
-                <option value="">Select District</option>
-              </select>
-            </div>
-            <div class="form-group col-lg-6">
-              <label for="commune_id">{{ $t('patients.commune') }}</label>
-              <select
-                v-model="commune_id"
-                name="commune_id"
-                id="commune_id"
-                class="form-control"
-              >
-                <option value="">Select Commune</option>
-              </select>
-            </div>
-            <div class="form-group col-lg-6">
-              <label for="village_id">{{ $t('patients.village') }}</label>
-              <select
-                v-model="village_id"
-                name="village_id"
-                id="village_id"
-                class="form-control"
-              >
-                <option value="">Select Village</option>
-              </select>
-            </div>
-          </div>
-        </fieldset>
+        <Provinces></Provinces>
         <b-button variant="danger" :class="['mr-1']">
           <b-icon icon="x-circle"></b-icon> {{ $t('app.cancel') }}
         </b-button>
@@ -243,9 +197,13 @@
 <script>
 import { required } from 'vuelidate/lib/validators'
 import PatientService from '../../services/PatientService'
+import Provinces from '../Provinces.vue'
 
 export default {
   name: 'FormPatient',
+  components: {
+    Provinces,
+  },
   data() {
     return {
       validationErrors: null,
@@ -373,23 +331,4 @@ export default {
 }
 </script>
 
-<style scoped>
-fieldset {
-  border: 1px solid #e3e6f0 !important;
-  padding: 1em 1.4em 1.4em 1.4em !important;
-  margin: 0 0 1.5em 0 !important;
-  -webkit-box-shadow: 0px 0px 0px 0px #000;
-  box-shadow: 0px 0px 0px 0px #000;
-  border-radius: 5px;
-}
-
-legend {
-  border-radius: 5px;
-  font-size: 1rem !important;
-  font-weight: normal !important;
-  text-align: left !important;
-  width: auto;
-  padding: 0 20px;
-  border-bottom: none;
-}
-</style>
+<style scoped></style>
