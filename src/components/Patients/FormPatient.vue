@@ -29,7 +29,7 @@
                 class="invalid-feedback"
                 v-if="!$v.form.health_id_card.required"
               >
-                Health ID Card is required
+                {{ $t('validations.health_id_card_required') }}
               </div>
             </div>
             <div class="form-group col-lg-4">
@@ -44,7 +44,7 @@
                 :class="{ 'is-invalid': $v.form.name_kh.$error }"
               />
               <div class="invalid-feedback" v-if="!$v.form.name_kh.required">
-                Name Khmer is required
+                {{ $t('validations.name_khmer_required') }}
               </div>
             </div>
             <div class="form-group col-lg-4">
@@ -59,7 +59,7 @@
                 :class="{ 'is-invalid': $v.form.name_en.$error }"
               />
               <div class="invalid-feedback" v-if="!$v.form.name_en.required">
-                Name English is required
+                {{ $t('validations.name_english_required') }}
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@
               >
               </b-form-select>
               <div class="invalid-feedback" v-if="!$v.form.gender.required">
-                Gender is required
+                {{ $t('validations.gender_required') }}
               </div>
             </div>
             <div class="form-group col-lg-4">
@@ -96,7 +96,7 @@
                 class="invalid-feedback"
                 v-if="!$v.form.nationality.required"
               >
-                Nationality is required
+                {{ $t('validations.nationality_required') }}
               </div>
             </div>
             <div class="form-group col-lg-4">
@@ -115,7 +115,7 @@
                 class="invalid-feedback"
                 v-if="!$v.form.date_of_birth.required"
               >
-                Date of birth is required
+                {{ $t('validations.date_of_birth_required') }}
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@
               >
               </b-form-select>
               <div class="invalid-feedback" v-if="!$v.form.occupation.required">
-                Occupation is required
+                {{ $t('validations.occupation_required') }}
               </div>
             </div>
             <div class="form-group col-lg-4">
@@ -263,25 +263,26 @@ export default {
         occupation: null,
         is_disabled: 0,
       },
-
       genderOptions: [
-        { value: null, text: 'Select Gender' },
-        { value: 'male', text: 'Male' },
-        { value: 'female', text: 'Female' },
+        { value: null, text: this.$t('patients.gender') },
+        { value: 'male', text: this.$t('patients.genders.male') },
+        { value: 'female', text: this.$t('patients.genders.female') },
       ],
       nationalities: [
-        { value: null, text: 'Select Nationality' },
-        { value: 'khmer', text: 'Khmer' },
-        { value: 'other', text: 'Other' },
+        { value: null, text: this.$t('patients.nationalilty') },
+        { value: 'khmer', text: this.$t('nation.khmer') },
+        { value: 'cham', text: this.$t('nation.cham') },
+        { value: 'other', text: this.$t('nation.other') },
       ],
       occupations: [
-        { value: null, text: 'Select Occupation' },
-        { value: 'job_title', text: 'Job Title' },
-        { value: 'job_title_2', text: 'Job Title 2' },
+        { value: null, text: this.$t('patients.occupation') },
+        { value: 'employee_in', text: this.$t('occupations.employee_in') },
+        { value: 'employee_out', text: this.$t('occupations.employee_out') },
+        { value: 'other', text: this.$t('occupations.other') },
       ],
       disables: [
-        { value: 0, text: 'No' },
-        { value: 1, text: 'Yes' },
+        { value: 0, text: this.$t('app.no') },
+        { value: 1, text: this.$t('app.yes') },
       ],
 
       province_id: null,
