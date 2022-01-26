@@ -12,7 +12,13 @@
         :css="css.table"
         @vuetable:pagination-data="onPaginationData"
       >
-        <div slot="actions">
+        <div slot="actions" slot-scope="props">
+          <router-link
+            :to="`patients/show/${props.rowData.id}`"
+            class="btn btn-sm btn-secondary mr-1"
+          >
+            <i class="fa fa-th-list"></i> {{ $t('app.edit') }}
+          </router-link>
           <a href="" class="btn btn-sm btn-info mr-1">
             <i class="fa fa-edit"></i> {{ $t('app.edit') }}
           </a>

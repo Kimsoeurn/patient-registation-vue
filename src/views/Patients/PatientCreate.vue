@@ -1,21 +1,27 @@
 <template>
   <div class="container-fluid my-3">
-    <h2>
-      {{ $t('patients.patient_registration') }}
-      <router-link to="/patients" class="btn btn-secondary float-right">
-        <b-icon icon="arrow90deg-left"></b-icon> {{ $t('app.go_back') }}
-      </router-link>
-    </h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>
+          {{ $t('patients.patient_registration') }}
+        </h2>
+      </div>
+      <div class="col-lg-6">
+        <go-back></go-back>
+      </div>
+    </div>
     <form-patient></form-patient>
   </div>
 </template>
 
 <script>
 import FormPatient from '../../components/Patients/FormPatient.vue'
+import GoBack from '../../components/GoBack'
 
 export default {
   name: 'PatientCreate',
   components: {
+    GoBack,
     FormPatient,
   },
 }

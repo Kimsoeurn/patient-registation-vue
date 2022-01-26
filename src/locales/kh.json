@@ -34,7 +34,8 @@
     "no_result": "គ្មានទិន្ន័យ...",
     "actions": "សកម្មភាព",
     "yes": "បាទ/ចាស៎",
-    "no": "ទេ"
+    "no": "ទេ",
+    "page_not_found": "គ្មានទិន្ន័យ"
   },
   "patients": {
     "patient_registration": "ទំរង់ចុះឈ្មោះអ្នកជំងឺ",
@@ -45,12 +46,14 @@
     "gender": "ភេទ",
     "genders": {
       "male": "ប្រុស",
-      "female": "ស្រី"
+      "female": "ស្រី",
+      "undefined": ""
     },
     "date_of_birth": "ថ្ងៃខែឆ្នាំកំណើត",
-    "nationalilty": "ជនជាតិ",
+    "nationality": "ជនជាតិ",
     "occupation": "មុខរបរ",
     "other_id_card": "ប័ណ្ណសម្គាល់ផ្សេងៗ",
+    "mental_id_card": "ប័ណ្ណសម្គាល់ផ្សេងៗ",
     "phone_number": "លេខទូរស័ព្ទ",
     "is_disabled": "តើអ្នកពិការ?",
     "remark": "កត់ចំណាំ",
@@ -58,7 +61,8 @@
     "province": "ខេត្ត",
     "district": "ស្រុក",
     "commune": "ឃុំ",
-    "village": "ភូមិ"
+    "village": "ភូមិ",
+    "detail": "ព័តមានលំអិត"
   },
   "nation" : {
     "khmer": "ខ្មែរ",

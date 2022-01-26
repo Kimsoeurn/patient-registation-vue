@@ -1,6 +1,6 @@
 import http from '../http-common'
 
-class PatientSevice {
+class PatientService {
   getAll() {
     return http.get('/patients')
   }
@@ -26,4 +26,4 @@ class PatientSevice {
   }
 }
 
-export default new PatientSevice()
+export default new PatientService()
