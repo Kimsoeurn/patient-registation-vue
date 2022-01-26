@@ -1,12 +1,7 @@
 <template>
   <div class="container-fluid my-3">
     <div class="row">
-      <div class="col-lg-6">
-        <h2>
-          {{ $t('patients.patient_registration') }}
-        </h2>
-      </div>
-      <div class="col-lg-6">
+      <div class="col-lg-12">
         <go-back></go-back>
       </div>
     </div>
@@ -37,13 +32,13 @@ fieldset {
   border-radius: 5px;
 }
 
-legend {
+fieldset legend {
   border-radius: 5px;
   font-size: 1rem !important;
   font-weight: normal !important;
   text-align: left !important;
   width: auto;
-  padding: 0 20px;
-  border-bottom: none;
+  padding: 5px 20px;
+  border: 1px solid #e3e6f0;
 }
 </style>
