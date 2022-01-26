@@ -50,6 +50,11 @@ export default (i18n) => {
       },
     },
     {
+      name: 'address',
+      title: i18n.t('patients.address'),
+      width: '20%',
+    },
+    {
       name: 'actions',
       title: i18n.t('app.actions'),
       titleClass: 'center aligned',
