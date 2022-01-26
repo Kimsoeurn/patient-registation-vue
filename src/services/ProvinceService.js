@@ -1,6 +1,6 @@
 import http from '../http-common'
 
-class ProvinceServince {
+class ProvinceService {
   getAll() {
     return http.get('/provinces')
   }
@@ -18,4 +18,4 @@ class ProvinceServince {
   }
 }
 
-export default new ProvinceServince()
+export default new ProvinceService()

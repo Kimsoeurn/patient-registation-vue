@@ -242,11 +242,6 @@ export default {
         { value: 0, text: this.$t('app.no') },
         { value: 1, text: this.$t('app.yes') },
       ],
-
-      province_id: null,
-      district_id: null,
-      commune_id: null,
-      village_id: null,
     }
   },
   validations: {
@@ -286,9 +281,16 @@ export default {
       this.$v.$touch()
 
       if (this.$v.$invalid) {
-        this.submitStatus = 'ERROR'
+        console.log('Validation Error')
       } else {
-        PatientService.create(this.form)
+        let data = {
+          ...this.form,
+          province_id: this.$store.state.province.province_id,
+          district_id: this.$store.state.province.district_id,
+          commune_id: this.$store.state.province.commune_id,
+          village_id: this.$store.state.province.village_id,
+        }
+        PatientService.create(data)
           .then((response) => {
             if (response.data.error) {
               Toast.fire({
@@ -301,12 +303,13 @@ export default {
                 title: 'Created',
               })
               this.reset()
+              this.$store.dispatch('resetAddress')
             }
           })
           .catch((e) => {
-            let errors = e.response.data['errors']
-            if (errors) {
-              this.validationErrors = errors
+            let data = e.response
+            if (data !== null) {
+              this.validationErrors = data.data['errors']
             }
           })
       }
@@ -326,6 +329,7 @@ export default {
         is_disabled: 0,
       }
       this.$v.$reset()
+      this.validationErrors = []
     },
   },
 }
