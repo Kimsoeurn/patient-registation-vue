@@ -63,6 +63,7 @@ export default {
     return {
       css: cssConfig,
       fields: FieldsDef(this.$i18n),
+      sortOrder: [],
     }
   },
   methods: {

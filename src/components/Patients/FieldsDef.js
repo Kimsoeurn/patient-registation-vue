@@ -44,7 +44,7 @@ export default (i18n) => {
       dataClass: 'center aligned',
       width: '15%',
       formatter(value) {
-        return value === 'male' ? 'Male' : 'Female'
+        return i18n.t('patients.genders.' + value)
       },
     },
     {
