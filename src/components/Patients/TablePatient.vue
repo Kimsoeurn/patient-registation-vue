@@ -17,7 +17,7 @@
             :to="`patients/show/${props.rowData.id}`"
             class="btn btn-sm btn-secondary mr-1"
           >
-            <i class="fa fa-th-list"></i> {{ $t('app.edit') }}
+            <i class="fa fa-th-list"></i> {{ $t('app.show') }}
           </router-link>
           <a href="" class="btn btn-sm btn-info mr-1">
             <i class="fa fa-edit"></i> {{ $t('app.edit') }}
@@ -30,12 +30,12 @@
     </div>
 
     <div class="row no-gutters">
-      <div class="col-lg-6 mt-3">
+      <div class="col-lg-6 mt-3 pl-3">
         <vuetable-pagination-info
           ref="paginationInfo"
         ></vuetable-pagination-info>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 pl-3">
         <vuetable-pagination
           ref="pagination"
           :css="css.pagination"
@@ -63,12 +63,6 @@ export default {
     return {
       css: cssConfig,
       fields: FieldsDef(this.$i18n),
-      sortOrder: [
-        {
-          field: 'name_kh',
-          direction: 'asc',
-        },
-      ],
     }
   },
   methods: {

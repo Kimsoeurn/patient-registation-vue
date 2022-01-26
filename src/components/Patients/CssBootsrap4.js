@@ -3,7 +3,7 @@ export default {
     tableWrapper: 'text-nowrap',
     tableHeaderClass: 'mb-0',
     tableBodyClass: 'mb-0',
-    tableClass: 'table table-bordered table-hover',
+    tableClass: 'table table-bordered',
     loadingClass: 'loading',
     ascendingIcon: 'fa fa-chevron-up',
     descendingIcon: 'fa fa-chevron-down',

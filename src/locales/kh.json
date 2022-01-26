@@ -62,7 +62,8 @@
     "district": "ស្រុក",
     "commune": "ឃុំ",
     "village": "ភូមិ",
-    "detail": "ព័តមានលំអិត"
+    "detail": "ព័តមានលំអិត",
+    "table_patients": "តារាងអ្នកជំងឺ"
   },
   "nation" : {
     "khmer": "ខ្មែរ",

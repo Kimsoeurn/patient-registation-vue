@@ -18,16 +18,14 @@ export default (i18n) => {
       width: '5%',
     },
     {
-      name: 'name_khmer',
+      name: 'name_kh',
       title: i18n.t('patients.name_khmer'),
       width: '20%',
-      sortField: 'name_khmer',
     },
     {
-      name: 'name_english',
+      name: 'name_en',
       title: i18n.t('patients.name_english'),
       width: '20%',
-      sortField: 'name_english',
     },
     {
       name: 'date_of_birth',
