@@ -3,8 +3,10 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Auth/Login.vue'
 import Register from '../views/Auth/Register.vue'
-import PatientIndex from '../views/Patients/PatientIndex.vue'
-import PatientCreate from '../views/Patients/PatientCreate.vue'
+import PatientIndex from '../views/patients/PatientIndex.vue'
+import PatientCreate from '../views/patients/PatientCreate.vue'
+import PatientShow from '../views/patients/PatientShow'
+import PatientEdit from '../views/patients/PatientEdit'
 
 Vue.use(VueRouter)
 
@@ -33,6 +35,16 @@ const routes = [
     path: '/patients/create',
     name: 'PatientCreate',
     component: PatientCreate,
+  },
+  {
+    path: '/patients/show/:id',
+    name: 'PatientShow',
+    component: PatientShow,
+  },
+  {
+    path: '/patients/edit/:id',
+    name: 'PatientEdit',
+    component: PatientEdit,
   },
 ]
 

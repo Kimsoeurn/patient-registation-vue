@@ -1,7 +1,6 @@
 <template>
   <div class="home text-center">
     <home-content></home-content>
-    <language></language>
   </div>
 </template>
 
