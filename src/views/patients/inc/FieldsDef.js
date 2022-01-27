@@ -18,19 +18,24 @@ export default (i18n) => {
       width: '5%',
     },
     {
+      name: 'health_id_card',
+      title: i18n.t('patients.health_id_card'),
+      width: '15%',
+    },
+    {
       name: 'name_kh',
       title: i18n.t('patients.name_khmer'),
-      width: '20%',
+      width: '15%',
     },
     {
       name: 'name_en',
       title: i18n.t('patients.name_english'),
-      width: '20%',
+      width: '15%',
     },
     {
       name: 'date_of_birth',
       title: i18n.t('patients.date_of_birth'),
-      width: '15%',
+      width: '12%',
       formatter: (value) => {
         return value === null
           ? ''
@@ -42,7 +47,7 @@ export default (i18n) => {
       title: i18n.t('patients.gender'),
       titleClass: 'center aligned',
       dataClass: 'center aligned',
-      width: '15%',
+      width: '10%',
       formatter(value) {
         return i18n.t('patients.genders.' + value)
       },
@@ -50,7 +55,7 @@ export default (i18n) => {
     {
       name: 'address',
       title: i18n.t('patients.address'),
-      width: '20%',
+      width: '15%',
     },
     {
       name: 'actions',
