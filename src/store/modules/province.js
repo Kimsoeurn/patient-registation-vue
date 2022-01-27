@@ -16,6 +16,10 @@ const getters = {
   allDistricts: (state) => state.districts,
   allCommunes: (state) => state.communes,
   allVillages: (state) => state.villages,
+  province_id: (state) => state.province_id,
+  district_id: (state) => state.district_id,
+  commune_id: (state) => state.commune_id,
+  village_id: (state) => state.village_id,
 }
 
 const actions = {
@@ -49,6 +53,12 @@ const actions = {
     commit('UPDATE_DISTRICT_ID', null)
     commit('UPDATE_COMMUNE_ID', null)
     commit('UPDATE_VILLAGE_ID', null)
+  },
+  async setDefaultAddress({ commit }, data) {
+    commit('UPDATE_PROVINCE_ID', data.province_id)
+    commit('UPDATE_DISTRICT_ID', data.district_id)
+    commit('UPDATE_COMMUNE_ID', data.commune_id)
+    commit('UPDATE_VILLAGE_ID', data.village_id)
   },
 }
 

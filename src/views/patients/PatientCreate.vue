@@ -5,19 +5,19 @@
         <go-back></go-back>
       </div>
     </div>
-    <form-patient></form-patient>
+    <patient-form></patient-form>
   </div>
 </template>
 
 <script>
-import FormPatient from '../../components/Patients/FormPatient.vue'
+import PatientForm from './PatientForm.vue'
 import GoBack from '../../components/GoBack'
 
 export default {
   name: 'PatientCreate',
   components: {
     GoBack,
-    FormPatient,
+    PatientForm,
   },
 }
 </script>

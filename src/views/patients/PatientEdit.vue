@@ -5,13 +5,13 @@
         <go-back></go-back>
       </div>
     </div>
-    <form-edit-patient :id="id"></form-edit-patient>
+    <patient-form :id="id"></patient-form>
   </div>
 </template>
 
 <script>
 import GoBack from '../../components/GoBack'
-import FormEditPatient from '../../components/Patients/FormEditPatient'
+import PatientForm from './PatientForm'
 export default {
   name: 'PatientEdit',
   data() {
@@ -20,7 +20,7 @@ export default {
     }
   },
   components: {
-    FormEditPatient,
+    PatientForm,
     GoBack,
   },
 }

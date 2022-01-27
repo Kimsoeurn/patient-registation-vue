@@ -50,10 +50,10 @@
 </template>
 <script>
 import Vuetable from 'vuetable-2/src/components/Vuetable'
-import VuetablePagination from '../PaginationB4.vue'
+import VuetablePagination from '../../components/PaginationB4.vue'
 import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
-import FieldsDef from './FieldsDef'
-import cssConfig from './CssBootsrap4'
+import FieldsDef from './inc/FieldsDef'
+import cssConfig from './inc/CssBootsrap4'
 
 export default {
   name: 'TablePatient',

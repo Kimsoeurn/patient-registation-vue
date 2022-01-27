@@ -3,18 +3,19 @@
     <div class="card-header">
       <i class="fa fa-plus"></i> {{ $t('patients.patient_registration') }}
     </div>
-    <b-form method="POST" @submit.prevent="save()" id="form-patient">
+    <b-form method="POST" @submit.prevent="savePatient" id="form-patient">
       <div class="card-body">
         <div class="form-patient">
           <ul>
             <li
-              v-for="error in validationErrors"
+              v-for="error in errorMessages"
               :key="error.message"
               class="text-danger"
             >
               {{ error[0] }}
             </li>
           </ul>
+
           <fieldset>
             <legend>{{ $t('patients.patient_info') }}</legend>
             <div class="row">
@@ -24,9 +25,10 @@
                   <span class="text-danger">*</span>
                 </label>
                 <b-input
-                  v-model.trim="form.health_id_card"
+                  v-model.trim="$v.form.health_id_card.$model"
                   type="text"
                   id="health_id_card"
+                  :class="{ 'is-invalid': $v.form.health_id_card.$error }"
                 />
                 <div
                   class="invalid-feedback"
@@ -190,7 +192,10 @@
               </div>
             </div>
           </fieldset>
-          <Provinces></Provinces>
+          <fieldset>
+            <legend>{{ $t('patients.address') }}</legend>
+            <Provinces></Provinces>
+          </fieldset>
         </div>
       </div>
       <div class="card-footer">
@@ -206,27 +211,32 @@
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
-import PatientService from '../../services/PatientService'
-import Provinces from '../Provinces.vue'
+import Provinces from '../../components/Provinces.vue'
+import LookupSelect from './inc/LookupSelect'
+import Validation from './inc/Validation'
 import { mapActions, mapGetters } from 'vuex'
-import LookupSelect from './LookupSelect'
 
 export default {
-  name: 'FormEditPatient',
+  name: 'PatientForm',
   props: {
-    id: {
-      type: Number,
-      required: true,
-    },
+    id: Number,
   },
   components: {
     Provinces,
   },
+  computed: {
+    ...mapGetters([
+      'getError',
+      'errorMessages',
+      'province_id',
+      'district_id',
+      'commune_id',
+      'village_id',
+      'getPatient',
+    ]),
+  },
   data() {
     return {
-      validationErrors: null,
-      provinces: [],
       form: {
         health_id_card: '',
         name_kh: '',
@@ -243,82 +253,38 @@ export default {
       ...LookupSelect(this.$i18n),
     }
   },
-  validations: {
-    form: {
-      health_id_card: {
-        required,
-      },
-      name_kh: {
-        required,
-      },
-      name_en: {
-        required,
-      },
-      gender: {
-        required,
-      },
-      nationality: {
-        required,
-      },
-      date_of_birth: {
-        required,
-      },
-      occupation: {
-        required,
-      },
-    },
-  },
-  computed: {
-    ...mapGetters(['getPatient']),
-  },
+  validations: { ...Validation },
   methods: {
-    ...mapActions(['fetchAsyncPatient']),
-    async fetchPatient() {
-      await this.fetchAsyncPatient(this.id)
-      this.form = { ...this.getPatient }
-    },
-    save() {
-      let Toast = this.$swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-      })
-
+    ...mapActions(['createPatient', 'fetchPatient', 'updatePatient']),
+    async savePatient() {
       this.$v.$touch()
 
-      if (this.$v.$invalid) {
-        console.log('Validation Error')
-      } else {
+      if (!this.$v.$invalid) {
         let data = {
           ...this.form,
-          province_id: this.$store.state.province.province_id,
-          district_id: this.$store.state.province.district_id,
-          commune_id: this.$store.state.province.commune_id,
-          village_id: this.$store.state.province.village_id,
+          province_id: this.province_id,
+          district_id: this.district_id,
+          commune_id: this.commune_id,
+          village_id: this.village_id,
         }
-        PatientService.create(data)
-          .then((response) => {
-            if (response.data.error) {
-              Toast.fire({
-                icon: 'success',
-                title: 'Fail Create',
-              })
-            } else {
-              Toast.fire({
-                icon: 'success',
-                title: 'Created',
-              })
-              this.reset()
-              this.$store.dispatch('resetAddress')
-            }
-          })
-          .catch((e) => {
-            let data = e.response
-            if (data !== null) {
-              this.validationErrors = data.data['errors']
-            }
-          })
+        if (this.id) {
+          await this.updatePatient({ id: this.id, data: data })
+          if (!this.getError) {
+            this.toastMessage('Updated')
+          } else {
+            this.toastMessage('Something went wrong', 'error')
+          }
+        } else {
+          await this.createPatient(data)
+          if (!this.getError) {
+            this.reset()
+            this.toastMessage('Created')
+          } else {
+            this.toastMessage('Something went wrong', 'error')
+          }
+        }
+      } else {
+        this.toastMessage('Something went wrong', 'error')
       }
     },
     reset() {
@@ -336,11 +302,34 @@ export default {
         is_disabled: 0,
       }
       this.$v.$reset()
-      this.validationErrors = []
+      this.$store.dispatch('resetAddress')
+    },
+    toastMessage(message, type = 'success') {
+      let Toast = this.$swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+      })
+      Toast.fire({
+        icon: type,
+        title: message,
+      })
     },
   },
-  created() {
-    this.fetchPatient()
+  async created() {
+    if (this.id) {
+      await this.fetchPatient(this.id)
+      this.form = { ...this.getPatient }
+      await this.$store.dispatch('setDefaultAddress', {
+        province_id: this.getPatient.province_id,
+        district_id: this.getPatient.district_id,
+        commune_id: this.getPatient.commune_id,
+        village_id: this.getPatient.village_id,
+      })
+    } else {
+      await this.$store.dispatch('resetAddress')
+    }
   },
 }
 </script>

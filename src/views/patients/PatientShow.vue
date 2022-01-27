@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import PatientDetail from '../../components/Patients/PatientDetail'
+import PatientDetail from './PatientDetail'
 import GoBack from '../../components/GoBack'
 export default {
   name: 'PatientShow',

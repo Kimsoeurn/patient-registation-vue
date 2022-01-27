@@ -68,7 +68,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import Page404 from '../Page404'
+import Page404 from '../../components/Page404'
 
 export default {
   name: 'PatientDetail',

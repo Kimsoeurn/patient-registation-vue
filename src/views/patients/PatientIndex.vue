@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import TablePatient from '../../components/Patients/TablePatient.vue'
+import TablePatient from './PatientTable.vue'
 export default {
   name: 'PatientIndex',
   components: {

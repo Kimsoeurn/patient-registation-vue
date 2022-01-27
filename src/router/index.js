@@ -3,10 +3,10 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Auth/Login.vue'
 import Register from '../views/Auth/Register.vue'
-import PatientIndex from '../views/Patients/PatientIndex.vue'
-import PatientCreate from '../views/Patients/PatientCreate.vue'
-import PatientShow from '../views/Patients/PatientShow'
-import PatientEdit from '../views/Patients/PatientEdit'
+import PatientIndex from '../views/patients/PatientIndex.vue'
+import PatientCreate from '../views/patients/PatientCreate.vue'
+import PatientShow from '../views/patients/PatientShow'
+import PatientEdit from '../views/patients/PatientEdit'
 
 Vue.use(VueRouter)
 
