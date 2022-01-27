@@ -35,7 +35,8 @@
     "actions": "សកម្មភាព",
     "yes": "បាទ/ចាស៎",
     "no": "ទេ",
-    "page_not_found": "គ្មានទិន្ន័យ"
+    "page_not_found": "គ្មានទិន្ន័យ",
+    "do_you_want_delete": "តើអ្នកពិតជាចង់លុប"
   },
   "patients": {
     "patient_registration": "ទំរង់ចុះឈ្មោះអ្នកជំងឺ",

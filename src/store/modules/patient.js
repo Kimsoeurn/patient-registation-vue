@@ -90,6 +90,17 @@ const actions = {
         }
       })
   },
+
+  async deletePatient({ commit }, id) {
+    await PatientService.delete(id)
+      .then((response) => {
+        console.log(response.data)
+        commit('SET_ERROR', false)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  },
 }
 
 export default {

@@ -25,7 +25,11 @@
           >
             <i class="fa fa-edit"></i> {{ $t('app.edit') }}
           </router-link>
-          <a href="" class="btn btn-sm btn-danger">
+          <a
+            @click.prevent="confirmDelete(props.rowData.id)"
+            href=""
+            class="btn btn-sm btn-danger"
+          >
             <i class="fa fa-trash"></i> {{ $t('app.delete') }}
           </a>
         </div>
@@ -54,6 +58,8 @@ import VuetablePagination from '../../components/PaginationB4.vue'
 import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
 import FieldsDef from './inc/FieldsDef'
 import cssConfig from './inc/CssBootsrap4'
+import { mapActions } from 'vuex'
+import Swal from 'sweetalert2'
 
 export default {
   name: 'TablePatient',
@@ -70,12 +76,36 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['deletePatient']),
     onPaginationData(paginationData) {
       this.$refs.pagination.setPaginationData(paginationData)
       this.$refs.paginationInfo.setPaginationData(paginationData)
     },
     onChangePage(page) {
       this.$refs.vuetable.changePage(page)
+    },
+    onUpdate(page) {
+      this.$refs.vuetable.refresh(page)
+    },
+
+    confirmDelete(id) {
+      let me = this
+      Swal.fire({
+        title: `${this.$i18n.t('app.do_you_want_delete')} ${id}?`,
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: `${this.$i18n.t('app.cancel')}`,
+        confirmButtonText: `${this.$i18n.t('app.yes')}`,
+      }).then(async function (result) {
+        if (result.isConfirmed) {
+          await me.deletePatient(id)
+          me.$refs.vuetable.refresh()
+          await Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+        }
+      })
     },
   },
 }
