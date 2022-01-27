@@ -5,14 +5,7 @@
         <go-back></go-back>
       </div>
     </div>
-    <div class="card">
-      <div class="card-header">
-        <i class="fa fa-th-list"></i> {{ $t('patients.detail') }}
-      </div>
-      <div class="card-body p-0">
-        <patient-detail></patient-detail>
-      </div>
-    </div>
+    <patient-detail></patient-detail>
   </div>
 </template>
 

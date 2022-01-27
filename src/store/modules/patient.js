@@ -65,8 +65,22 @@ const actions = {
       })
   },
   async fetchPatient({ commit }, id) {
-    let response = await PatientService.get(id)
-    commit('SET_PATIENT', response.data.data)
+    await PatientService.get(id)
+      .then((response) => {
+        let data = response.data
+        if (data.errors) {
+          commit('SET_ERROR', true)
+        } else {
+          commit('SET_PATIENT', data.data)
+          commit('SET_ERROR', false)
+        }
+      })
+      .catch((e) => {
+        let data = e.response
+        if (data !== null) {
+          commit('SET_ERROR', true)
+        }
+      })
   },
 }
 
