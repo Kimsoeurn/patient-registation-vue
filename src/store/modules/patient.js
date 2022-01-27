@@ -2,6 +2,7 @@ import PatientService from '../../services/PatientService'
 
 const state = {
   error: null,
+  error404: null,
   errorMessages: [],
   patient: {},
 }
@@ -10,7 +11,9 @@ const getters = {
   getPatient: (state) => state.patient,
   getError: (state) => state.error,
   errorMessages: (state) => state.errorMessages,
+  error404: (state) => state.error404,
 }
+
 const mutations = {
   SET_PATIENT: (state, value) => {
     state.patient = value
@@ -20,6 +23,9 @@ const mutations = {
   },
   SET_ERROR_MESSAGE: (state, errors) => {
     state.errorMessages = errors
+  },
+  SET_ERROR_404: (state, error) => {
+    state.error404 = error
   },
 }
 
@@ -70,6 +76,7 @@ const actions = {
         let data = response.data
         if (data.errors) {
           commit('SET_ERROR', true)
+          commit('SET_ERROR_404', true)
         } else {
           commit('SET_PATIENT', data.data)
           commit('SET_ERROR', false)
@@ -79,6 +86,7 @@ const actions = {
         let data = e.response
         if (data !== null) {
           commit('SET_ERROR', true)
+          commit('SET_ERROR_404', true)
         }
       })
   },

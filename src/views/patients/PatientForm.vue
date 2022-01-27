@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div v-if="!error404" class="card">
     <div class="card-header">
       <i class="fa fa-plus"></i> {{ $t('patients.patient_registration') }}
     </div>
@@ -208,6 +208,9 @@
       </div>
     </b-form>
   </div>
+  <div v-else>
+    <page404></page404>
+  </div>
 </template>
 
 <script>
@@ -215,6 +218,7 @@ import Provinces from '../../components/Provinces.vue'
 import LookupSelect from './inc/LookupSelect'
 import Validation from './inc/Validation'
 import { mapActions, mapGetters } from 'vuex'
+import Page404 from '../../components/Page404'
 
 export default {
   name: 'PatientForm',
@@ -223,11 +227,13 @@ export default {
   },
   components: {
     Provinces,
+    Page404,
   },
   computed: {
     ...mapGetters([
       'getError',
       'errorMessages',
+      'error404',
       'province_id',
       'district_id',
       'commune_id',
