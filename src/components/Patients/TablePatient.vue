@@ -19,9 +19,12 @@
           >
             <i class="fa fa-th-list"></i> {{ $t('app.show') }}
           </router-link>
-          <a href="" class="btn btn-sm btn-info mr-1">
+          <router-link
+            :to="`patients/edit/${props.rowData.id}`"
+            class="btn btn-sm btn-info mr-1"
+          >
             <i class="fa fa-edit"></i> {{ $t('app.edit') }}
-          </a>
+          </router-link>
           <a href="" class="btn btn-sm btn-danger">
             <i class="fa fa-trash"></i> {{ $t('app.delete') }}
           </a>

@@ -6,6 +6,7 @@ import Register from '../views/Auth/Register.vue'
 import PatientIndex from '../views/Patients/PatientIndex.vue'
 import PatientCreate from '../views/Patients/PatientCreate.vue'
 import PatientShow from '../views/Patients/PatientShow'
+import PatientEdit from '../views/Patients/PatientEdit'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/patients/show/:id',
     name: 'PatientShow',
     component: PatientShow,
+  },
+  {
+    path: '/patients/edit/:id',
+    name: 'PatientEdit',
+    component: PatientEdit,
   },
 ]
 

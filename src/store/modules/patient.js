@@ -6,7 +6,7 @@ const state = {
 }
 
 const getters = {
-  patient: (state) => state.patient,
+  getPatient: (state) => state.patient,
   getError: (state) => state.error,
 }
 const mutations = {
@@ -32,6 +32,11 @@ const actions = {
           commit('SET_ERROR', true)
         }
       })
+  },
+
+  async fetchAsyncPatient({ commit }, id) {
+    let response = await PatientService.get(id)
+    commit('SET_PATIENT', response.data.data)
   },
 }
 
