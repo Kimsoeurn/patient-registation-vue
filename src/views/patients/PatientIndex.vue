@@ -4,7 +4,7 @@
       <div class="col-lg-12">
         <router-link
           to="/patients/create"
-          class="btn btn-primary float-right mb-3"
+          class="btn btn-primary float-right my-3"
         >
           <b-icon icon="plus"></b-icon> {{ $t('app.add') }}
         </router-link>
