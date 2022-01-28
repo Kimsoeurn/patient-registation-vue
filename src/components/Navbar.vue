@@ -20,11 +20,11 @@
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <language></language>
-            <b-nav-item-dropdown right>
+            <b-nav-item-dropdown right v-if="token">
               <!-- Using 'button-content' slot -->
               <template #button-content>User</template>
               <b-dropdown-item href="#">Profile</b-dropdown-item>
-              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+              <logout></logout>
             </b-nav-item-dropdown>
           </b-navbar-nav>
         </b-collapse>
@@ -35,10 +35,17 @@
 
 <script>
 import Language from './Language.vue'
+import Logout from '../views/auth/Logout'
 
 export default {
   name: 'Navbar',
+  computed: {
+    token() {
+      return this.$store.getters.token
+    },
+  },
   components: {
+    Logout,
     Language,
   },
 }

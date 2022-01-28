@@ -15,6 +15,9 @@
 </template>
 
 <script>
+import httpCommon from '../http-common'
+import axios from 'axios'
+
 export default {
   name: 'HelloWorld',
   props: {
