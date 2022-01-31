@@ -25,7 +25,6 @@
               <template #button-content>
                 <em>{{ currentUser.name }}</em>
               </template>
-              <b-dropdown-item href="#">Profile</b-dropdown-item>
               <b-dropdown-item @click.prevent="logout" href="#">
                 Sign Out
               </b-dropdown-item>
