@@ -43,6 +43,11 @@ const mutations = {
   SET_AUTH_ERROR(state, data) {
     state.authError = data
   },
+
+  UNSET_USER(state) {
+    state.user = {}
+    TokenService.removeCurrentUser()
+  },
 }
 
 const actions = {
@@ -67,6 +72,8 @@ const actions = {
     let response = await AuthService.logout()
     if (response.status === 200) {
       context.commit('UNSET_TOKEN')
+      context.commit('SET_AUTH_ERROR', false)
+      context.commit('UNSET_USER')
     } else {
       console.log('Error Logout')
     }

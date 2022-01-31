@@ -17,6 +17,9 @@ class TokenService {
   setCurrentUser(user) {
     window.localStorage.setItem(CURRENT_USER, JSON.stringify(user))
   }
+  removeCurrentUser() {
+    window.localStorage.removeItem(CURRENT_USER)
+  }
 }
 
 export default new TokenService()
