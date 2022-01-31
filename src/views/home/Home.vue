@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import HomeContent from '../components/HomeContent.vue'
+import HomeContent from './HomeContent.vue'
 
 export default {
   name: 'Home',

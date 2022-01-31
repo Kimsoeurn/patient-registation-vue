@@ -51,10 +51,10 @@ const mutations = {
 }
 
 const actions = {
-  async login(context, data) {
+  async login({ commit }, data) {
     let response = await AuthService.login(data)
     if (response.status === 200) {
-      context.commit('SET_TOKEN', response.data)
+      commit('SET_TOKEN', response.data)
       http.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${response.data.access_token}`
@@ -68,12 +68,12 @@ const actions = {
     commit('SET_USER', response.data)
   },
 
-  async logout(context) {
+  async logout({ commit }) {
     let response = await AuthService.logout()
     if (response.status === 200) {
-      context.commit('UNSET_TOKEN')
-      context.commit('SET_AUTH_ERROR', false)
-      context.commit('UNSET_USER')
+      commit('UNSET_TOKEN')
+      commit('SET_AUTH_ERROR', false)
+      commit('UNSET_USER')
     } else {
       console.log('Error Logout')
     }
@@ -81,6 +81,7 @@ const actions = {
 }
 
 export default {
+  namespaced: true,
   getters,
   actions,
   mutations,

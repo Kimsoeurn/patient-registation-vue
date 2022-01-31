@@ -25,7 +25,7 @@ export default {
     msg: String,
   },
   computed: {
-    ...mapGetters(['isAuthenticated']),
+    ...mapGetters({ isAuthenticated: 'auth/isAuthenticated' }),
   },
 }
 </script>

@@ -59,7 +59,9 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['authError']),
+    ...mapGetters({
+      authError: 'auth/authError',
+    }),
   },
   methods: {
     signIn() {
@@ -71,13 +73,13 @@ export default {
           password: this.password,
         }
         this.$store
-          .dispatch('login', data)
+          .dispatch('auth/login', data)
           .then(() => {
-            this.$store.dispatch('profile')
+            this.$store.dispatch('auth/profile')
             this.$router.push('/')
           })
           .catch(() => {
-            this.$store.commit('SET_AUTH_ERROR', true)
+            this.$store.commit('auth/SET_AUTH_ERROR', true)
           })
       }
     },

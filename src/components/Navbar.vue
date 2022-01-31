@@ -47,18 +47,18 @@ export default {
     Language,
   },
   computed: {
-    ...mapGetters(['isAuthenticated', 'currentUser']),
+    ...mapGetters({
+      isAuthenticated: 'auth/isAuthenticated',
+      currentUser: 'auth/currentUser',
+    }),
   },
   methods: {
     logout() {
       let vm = this
-      this.$store.dispatch('logout').then(() => {
+      this.$store.dispatch('auth/logout').then(() => {
         vm.$router.push('/login')
       })
     },
-  },
-  mounted() {
-    console.log(this.currentUser)
   },
 }
 </script>
