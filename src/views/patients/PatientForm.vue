@@ -230,16 +230,12 @@ export default {
     Page404,
   },
   computed: {
-    ...mapGetters([
-      'getError',
-      'errorMessages',
-      'error404',
-      'province_id',
-      'district_id',
-      'commune_id',
-      'village_id',
-      'getPatient',
-    ]),
+    ...mapGetters({
+      getError: 'patient/getError',
+      errorMessages: 'patient/errorMessages',
+      error404: 'patient/error404',
+      getPatient: 'patient/getPatient',
+    }),
   },
   data() {
     return {
@@ -261,7 +257,11 @@ export default {
   },
   validations: { ...Validation },
   methods: {
-    ...mapActions(['createPatient', 'fetchPatient', 'updatePatient']),
+    ...mapActions({
+      createPatient: 'patient/createPatient',
+      fetchPatient: 'patient/fetchPatient',
+      updatePatient: 'patient/updatePatient',
+    }),
     async savePatient() {
       this.$v.$touch()
 
@@ -273,6 +273,14 @@ export default {
           commune_id: this.commune_id,
           village_id: this.village_id,
         }
+
+        if (!this.getError) {
+          this.reset()
+          this.toastMessage('Created')
+        } else {
+          this.toastMessage('Something went wrong', 'error')
+        }
+
         if (this.id) {
           await this.updatePatient({ id: this.id, data: data })
           if (!this.getError) {
@@ -308,7 +316,7 @@ export default {
         is_disabled: 0,
       }
       this.$v.$reset()
-      this.$store.dispatch('resetAddress')
+      this.$store.dispatch('province/resetAddress')
     },
     toastMessage(message, type = 'success') {
       let Toast = this.$swal.mixin({
@@ -327,14 +335,14 @@ export default {
     if (this.id) {
       await this.fetchPatient(this.id)
       this.form = { ...this.getPatient }
-      await this.$store.dispatch('setDefaultAddress', {
+      await this.$store.dispatch('province/setDefaultAddress', {
         province_id: this.getPatient.province_id,
         district_id: this.getPatient.district_id,
         commune_id: this.getPatient.commune_id,
         village_id: this.getPatient.village_id,
       })
     } else {
-      await this.$store.dispatch('resetAddress')
+      await this.$store.dispatch('province/resetAddress')
     }
   },
 }

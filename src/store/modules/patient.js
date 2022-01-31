@@ -30,10 +30,6 @@ const mutations = {
 }
 
 const actions = {
-  async fetchPatients() {
-    return await PatientService.getAll()
-  },
-
   async createPatient({ commit }, data) {
     await PatientService.create(data)
       .then((response) => {
