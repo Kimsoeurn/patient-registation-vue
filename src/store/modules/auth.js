@@ -1,49 +1,66 @@
+import TokenService from '../../services/TokenService'
+import http from '../../http-common'
 import AuthService from '../../services/AuthService'
-import router from '../../router'
 
 const state = {
-  token: localStorage.getItem('access_token') || null,
+  token: TokenService.getToken() || null,
+  userId: null,
+  isAuthenticated: false,
 }
+
 const getters = {
-  token: (state) => state.token,
+  currentUser(state) {
+    return state.userId
+  },
+  isAuthenticated(state) {
+    return !!state.token
+  },
+  getToken(state) {
+    return state.token
+  },
 }
 
 const mutations = {
-  SET_TOKEN: (state, token) => {
-    state.token = token
+  SET_USER(state, data) {
+    state.isAuthenticated = true
+    state.userId = null
+    state.token = data.access_token
+    TokenService.setToken(data.access_token)
+  },
+  UNSET_USER(state) {
+    state.token = null
+    state.userId = null
+    state.isAuthenticated = false
+    TokenService.removeToken()
   },
 }
+
 const actions = {
-  async login({ commit }, data) {
-    await AuthService.login(data)
-      .then((response) => {
-        const token = response.data.access_token
-        localStorage.setItem('access_token', token)
-        commit('SET_TOKEN', token)
-        router.push('/')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  async login(context, data) {
+    let response = await new AuthService(http).login(data)
+    if (response.status === 200) {
+      context.commit('SET_USER', response.data)
+      http.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${response.data.access_token}`
+    } else {
+      console.log('Login fail')
+    }
   },
-  doLogout(context) {
-    if (context.getters.token) {
-      AuthService.logout()
-        .then((response) => {
-          console.log(response)
-          context.commit('SET_TOKEN', null)
-          localStorage.removeItem('access_token')
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+
+  async logout(context) {
+    let response = await new AuthService(http).logout()
+    if (response.status === 200) {
+      context.commit('UNSET_USER')
+    } else {
+      console.log('Error Logout')
     }
   },
 }
 
 export default {
-  state,
   getters,
-  mutations,
   actions,
+  mutations,
+  state,
 }

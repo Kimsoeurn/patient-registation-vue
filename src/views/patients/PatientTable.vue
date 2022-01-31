@@ -4,6 +4,7 @@
       <vuetable
         ref="vuetable"
         api-url="http://localhost/api/patients"
+        :http-options="httpHeader"
         :fields="fields"
         :sort-order="sortOrder"
         data-path="data"
@@ -58,8 +59,9 @@ import VuetablePagination from '../../components/PaginationB4.vue'
 import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
 import FieldsDef from './inc/FieldsDef'
 import cssConfig from './inc/CssBootsrap4'
-import { mapActions } from 'vuex'
 import Swal from 'sweetalert2'
+import { mapActions } from 'vuex'
+import TokenService from '../../services/TokenService'
 
 export default {
   name: 'TablePatient',
@@ -73,10 +75,13 @@ export default {
       css: cssConfig,
       fields: FieldsDef(this.$i18n),
       sortOrder: [],
+      httpHeader: {
+        headers: { Authorization: 'Bearer ' + TokenService.getToken() },
+      },
     }
   },
   methods: {
-    ...mapActions(['deletePatient']),
+    ...mapActions(['deletePatient', 'fetchPatients']),
     onPaginationData(paginationData) {
       this.$refs.pagination.setPaginationData(paginationData)
       this.$refs.paginationInfo.setPaginationData(paginationData)

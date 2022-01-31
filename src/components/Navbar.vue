@@ -12,7 +12,7 @@
                 {{ $t('navbar.home') }}
               </router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="isAuthenticated">
               <router-link to="/patients" class="nav-link">
                 {{ $t('navbar.patients') }}
               </router-link>
@@ -20,11 +20,15 @@
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <language></language>
-            <b-nav-item-dropdown right v-if="token">
+            <b-nav-item-dropdown right v-if="isAuthenticated">
               <!-- Using 'button-content' slot -->
-              <template #button-content>User</template>
+              <template #button-content>
+                <em>User</em>
+              </template>
               <b-dropdown-item href="#">Profile</b-dropdown-item>
-              <logout></logout>
+              <b-dropdown-item @click.prevent="logout" href="#">
+                Sign Out
+              </b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
         </b-collapse>
@@ -35,18 +39,23 @@
 
 <script>
 import Language from './Language.vue'
-import Logout from '../views/auth/Logout'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Navbar',
-  computed: {
-    token() {
-      return this.$store.getters.token
-    },
-  },
   components: {
-    Logout,
     Language,
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated']),
+  },
+  methods: {
+    logout() {
+      let vm = this
+      this.$store.dispatch('logout').then(() => {
+        vm.$router.push('/login')
+      })
+    },
   },
 }
 </script>

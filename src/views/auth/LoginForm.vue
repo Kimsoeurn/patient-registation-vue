@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="doLogin" class="form-signin" autocomplete="off">
+  <form @submit.prevent="signIn" class="form-signin" autocomplete="off">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-group">
@@ -38,7 +38,6 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators'
-import { mapActions } from 'vuex'
 
 export default {
   name: 'LoginForm',
@@ -57,8 +56,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['login']),
-    doLogin() {
+    signIn() {
       this.$v.$touch()
 
       if (!this.$v.$invalid) {
@@ -66,7 +64,7 @@ export default {
           username: this.username,
           password: this.password,
         }
-        this.login(data)
+        this.$store.dispatch('login', data).then(() => this.$router.push('/'))
       }
     },
   },

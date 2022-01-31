@@ -4,24 +4,28 @@
       <p>
         {{ $t('application_detail') }}
       </p>
-      <router-link to="/login" class="btn btn-success mr-1">
-        <b-icon icon="person"></b-icon> {{ $t('auth.login') }}
-      </router-link>
-      <router-link to="/register" class="btn btn-primary">
-        <b-icon icon="person-plus"></b-icon> {{ $t('auth.register') }}
-      </router-link>
+      <div v-if="!isAuthenticated">
+        <router-link to="/login" class="btn btn-success mr-1">
+          <b-icon icon="person"></b-icon> {{ $t('auth.login') }}
+        </router-link>
+        <router-link to="/register" class="btn btn-primary">
+          <b-icon icon="person-plus"></b-icon> {{ $t('auth.register') }}
+        </router-link>
+      </div>
     </b-jumbotron>
   </div>
 </template>
 
 <script>
-import httpCommon from '../http-common'
-import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: 'HelloWorld',
+  name: 'HomeContent',
   props: {
     msg: String,
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated']),
   },
 }
 </script>

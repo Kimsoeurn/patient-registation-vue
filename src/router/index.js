@@ -7,7 +7,7 @@ import PatientIndex from '../views/patients/PatientIndex.vue'
 import PatientCreate from '../views/patients/PatientCreate.vue'
 import PatientShow from '../views/patients/PatientShow'
 import PatientEdit from '../views/patients/PatientEdit'
-import Logout from '../views/auth/Logout'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -34,31 +34,37 @@ const routes = [
     },
   },
   {
-    path: '/logout',
-    name: 'Logout',
-    component: Logout,
-  },
-  {
     path: '/patients',
     name: 'PatientIndex',
     component: PatientIndex,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/patients/create',
     name: 'PatientCreate',
     component: PatientCreate,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/patients/show/:id',
     name: 'PatientShow',
     component: PatientShow,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/patients/edit/:id',
     name: 'PatientEdit',
     component: PatientEdit,
+    meta: {
+      requiresAuth: true,
+    },
   },
-  { path: '*', redirect: '/' },
 ]
 
 const router = new VueRouter({
@@ -68,20 +74,14 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/login', '/register']
-  const authRequired = !publicPages.includes(to.path)
-  const loggedIn = localStorage.getItem('access_token')
-
-  if (authRequired && !loggedIn) {
-    return next('/login')
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (store.getters.isAuthenticated) {
+      next()
+      return
+    }
+    next('/login')
+  } else {
+    next()
   }
-
-  if (loggedIn && to.matched.some((record) => record.meta.requiresVisitor)) {
-    return next('/')
-  }
-
-  next()
 })
-
 export default router
