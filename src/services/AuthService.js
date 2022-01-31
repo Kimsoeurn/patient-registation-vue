@@ -1,19 +1,17 @@
-class AuthService {
-  constructor(http) {
-    this.http = http
-  }
+import http from '../http-common'
 
+class AuthService {
   login(data) {
-    return this.http.post('login', data)
+    return http.post('login', data)
   }
 
   logout() {
-    return this.http.post('logout')
+    return http.post('logout')
   }
 
   profile() {
-    return this.http.get('user')
+    return http.get('user')
   }
 }
 
-export default AuthService
+export default new AuthService()

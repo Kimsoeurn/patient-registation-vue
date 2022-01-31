@@ -37,7 +37,7 @@ const mutations = {
 
 const actions = {
   async login(context, data) {
-    let response = await new AuthService(http).login(data)
+    let response = await AuthService.login(data)
     if (response.status === 200) {
       context.commit('SET_USER', response.data)
       http.defaults.headers.common[
@@ -49,7 +49,7 @@ const actions = {
   },
 
   async logout(context) {
-    let response = await new AuthService(http).logout()
+    let response = await AuthService.logout()
     if (response.status === 200) {
       context.commit('UNSET_USER')
     } else {
