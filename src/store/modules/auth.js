@@ -1,5 +1,5 @@
 import TokenService from '../../services/TokenService'
-import http from '../../http-common'
+import http from '../../services/HttpConfig'
 import AuthService from '../../services/AuthService'
 
 const state = {

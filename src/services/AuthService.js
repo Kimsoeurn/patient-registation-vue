@@ -1,4 +1,4 @@
-import http from '../http-common'
+import http from './HttpConfig'
 
 class AuthService {
   login(data) {
