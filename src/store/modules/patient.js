@@ -80,6 +80,7 @@ const actions = {
         } else {
           commit('SET_PATIENT', data.data)
           commit('SET_ERROR', false)
+          commit('SET_ERROR_404', false)
         }
       })
       .catch((e) => {

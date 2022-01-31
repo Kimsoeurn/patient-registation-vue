@@ -274,13 +274,6 @@ export default {
           village_id: this.village_id,
         }
 
-        if (!this.getError) {
-          this.reset()
-          this.toastMessage('Created')
-        } else {
-          this.toastMessage('Something went wrong', 'error')
-        }
-
         if (this.id) {
           await this.updatePatient({ id: this.id, data: data })
           if (!this.getError) {
@@ -342,6 +335,7 @@ export default {
         village_id: this.getPatient.village_id,
       })
     } else {
+      this.$store.commit('patient/SET_ERROR_404', false)
       await this.$store.dispatch('province/resetAddress')
     }
   },
