@@ -81,10 +81,13 @@ export default {
   name: 'PatientDetail',
   components: { Page404 },
   computed: {
-    ...mapGetters(['getPatient', 'getError']),
+    ...mapGetters({
+      getPatient: 'patient/getPatient',
+      getError: 'patient/getError',
+    }),
   },
   methods: {
-    ...mapActions(['fetchPatient']),
+    ...mapActions({ fetchPatient: 'patient/fetchPatient' }),
   },
   async created() {
     await this.fetchPatient(this.$route.params.id)

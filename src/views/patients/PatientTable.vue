@@ -4,6 +4,7 @@
       <vuetable
         ref="vuetable"
         api-url="http://localhost/api/patients"
+        :http-options="httpHeader"
         :fields="fields"
         :sort-order="sortOrder"
         data-path="data"
@@ -58,8 +59,8 @@ import VuetablePagination from '../../components/PaginationB4.vue'
 import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
 import FieldsDef from './inc/FieldsDef'
 import cssConfig from './inc/CssBootsrap4'
-import { mapActions } from 'vuex'
 import Swal from 'sweetalert2'
+import TokenService from '../../services/TokenService'
 
 export default {
   name: 'TablePatient',
@@ -73,10 +74,12 @@ export default {
       css: cssConfig,
       fields: FieldsDef(this.$i18n),
       sortOrder: [],
+      httpHeader: {
+        headers: { Authorization: 'Bearer ' + TokenService.getToken() },
+      },
     }
   },
   methods: {
-    ...mapActions(['deletePatient']),
     onPaginationData(paginationData) {
       this.$refs.pagination.setPaginationData(paginationData)
       this.$refs.paginationInfo.setPaginationData(paginationData)
@@ -99,11 +102,15 @@ export default {
         cancelButtonColor: '#d33',
         cancelButtonText: `${this.$i18n.t('app.cancel')}`,
         confirmButtonText: `${this.$i18n.t('app.yes')}`,
-      }).then(async function (result) {
+      }).then(function (result) {
         if (result.isConfirmed) {
-          await me.deletePatient(id)
-          me.$refs.vuetable.refresh()
-          await Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+          me.$store
+            .dispatch('patient/deletePatient', id)
+            .then(() => {
+              me.$refs.vuetable.refresh()
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+            })
+            .catch((e) => console.log(e))
         }
       })
     },
