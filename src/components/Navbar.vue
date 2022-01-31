@@ -23,7 +23,7 @@
             <b-nav-item-dropdown right v-if="isAuthenticated">
               <!-- Using 'button-content' slot -->
               <template #button-content>
-                <em>User</em>
+                <em>{{ currentUser.name }}</em>
               </template>
               <b-dropdown-item href="#">Profile</b-dropdown-item>
               <b-dropdown-item @click.prevent="logout" href="#">
@@ -47,7 +47,7 @@ export default {
     Language,
   },
   computed: {
-    ...mapGetters(['isAuthenticated']),
+    ...mapGetters(['isAuthenticated', 'currentUser']),
   },
   methods: {
     logout() {
@@ -57,5 +57,10 @@ export default {
       })
     },
   },
+  mounted() {
+    console.log(this.currentUser)
+  },
 }
 </script>
+
+<style scoped></style>

@@ -1,4 +1,5 @@
 const API_ACCESS_TOKEN = 'access_token'
+const CURRENT_USER = 'user'
 
 class TokenService {
   getToken() {
@@ -9,6 +10,12 @@ class TokenService {
   }
   removeToken() {
     window.localStorage.removeItem(API_ACCESS_TOKEN)
+  }
+  getCurrentUser() {
+    return JSON.parse(window.localStorage.getItem(CURRENT_USER))
+  }
+  setCurrentUser(user) {
+    window.localStorage.setItem(CURRENT_USER, JSON.stringify(user))
   }
 }
 

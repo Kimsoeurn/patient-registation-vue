@@ -83,6 +83,8 @@
     "gender_required": "សូមជ្រើសរើសភេទ",
     "nationality_required": "សូមជ្រើសរើសជនជាតិ",
     "date_of_birth_required": "សូមបំពេញថ្ងៃខែឆ្នាំកំណើត",
-    "occupation_required": "សូមជ្រើសរើសមុខរបរ"
+    "occupation_required": "សូមជ្រើសរើសមុខរបរ",
+    "username_required": "សូមបំពេញអ៊ីមែល",
+    "password_required": "សូមបំពេញលេខសំម្ងាត់"
   }
 }

@@ -1,10 +1,10 @@
 <template>
   <form @submit.prevent="signIn" class="form-signin" autocomplete="off">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
+    <h1 class="h3 mb-3 fw-normal">{{ $t('auth.please_sign_in') }}</h1>
+    <p v-if="authError" class="alert alert-danger">Invalid email / password</p>
     <div class="form-group">
       <label for="email">
-        Email address <span class="text-danger">*</span>
+        {{ $t('auth.email') }} <span class="text-danger">*</span>
       </label>
       <input
         v-model="username"
@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
       <label for="password">
-        Password <span class="text-danger">*</span>
+        {{ $t('auth.password') }} <span class="text-danger">*</span>
       </label>
       <input
         v-model="password"
@@ -32,12 +32,15 @@
         {{ $t('validations.password_required') }}
       </div>
     </div>
-    <button type="submit" class="w-100 btn btn-lg btn-primary">Sign in</button>
+    <button type="submit" class="w-100 btn btn-lg btn-primary">
+      {{ $t('auth.sign_in') }}
+    </button>
   </form>
 </template>
 
 <script>
 import { required } from 'vuelidate/lib/validators'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'LoginForm',
@@ -55,6 +58,9 @@ export default {
       required,
     },
   },
+  computed: {
+    ...mapGetters(['authError']),
+  },
   methods: {
     signIn() {
       this.$v.$touch()
@@ -64,7 +70,15 @@ export default {
           username: this.username,
           password: this.password,
         }
-        this.$store.dispatch('login', data).then(() => this.$router.push('/'))
+        this.$store
+          .dispatch('login', data)
+          .then(() => {
+            this.$store.dispatch('profile')
+            this.$router.push('/')
+          })
+          .catch(() => {
+            this.$store.commit('SET_AUTH_ERROR', true)
+          })
       }
     },
   },
