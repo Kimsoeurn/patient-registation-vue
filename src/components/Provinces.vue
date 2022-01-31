@@ -78,7 +78,7 @@ export default {
         return this.$store.state.province.province_id
       },
       set(value) {
-        this.$store.commit('UPDATE_PROVINCE_ID', value)
+        this.$store.commit('province/UPDATE_PROVINCE_ID', value)
         if (value) {
           this.fetchDistricts()
         }
@@ -89,7 +89,7 @@ export default {
         return this.$store.state.province.district_id
       },
       set(value) {
-        this.$store.commit('UPDATE_DISTRICT_ID', value)
+        this.$store.commit('province/UPDATE_DISTRICT_ID', value)
         if (value) {
           this.fetchCommunes()
         }
@@ -100,7 +100,7 @@ export default {
         return this.$store.state.province.commune_id
       },
       set(value) {
-        this.$store.commit('UPDATE_COMMUNE_ID', value)
+        this.$store.commit('province/UPDATE_COMMUNE_ID', value)
         if (value) {
           this.fetchVillages()
         }
@@ -111,39 +111,39 @@ export default {
         return this.$store.state.province.village_id
       },
       set(value) {
-        this.$store.commit('UPDATE_VILLAGE_ID', value)
+        this.$store.commit('province/UPDATE_VILLAGE_ID', value)
       },
     },
-    ...mapGetters([
-      'allProvinces',
-      'allDistricts',
-      'allCommunes',
-      'allVillages',
-    ]),
+    ...mapGetters({
+      allProvinces: 'province/allProvinces',
+      allDistricts: 'province/allDistricts',
+      allCommunes: 'province/allCommunes',
+      allVillages: 'province/allVillages',
+    }),
   },
   methods: {
-    ...mapActions([
-      'fetchProvinces',
-      'fetchDistricts',
-      'fetchCommunes',
-      'fetchVillages',
-      'resetForm',
-    ]),
+    ...mapActions({
+      fetchProvinces: 'province/fetchProvinces',
+      fetchDistricts: 'province/fetchDistricts',
+      fetchCommunes: 'province/fetchCommunes',
+      fetchVillages: 'province/fetchVillages',
+      resetForm: 'province/resetForm',
+    }),
     changeProvince() {
-      this.$store.commit('UPDATE_DISTRICT_ID', null)
-      this.$store.commit('UPDATE_VILLAGE_ID', null)
-      this.$store.commit('UPDATE_COMMUNE_ID', null)
+      this.$store.commit('province/UPDATE_DISTRICT_ID', null)
+      this.$store.commit('province/UPDATE_VILLAGE_ID', null)
+      this.$store.commit('province/UPDATE_COMMUNE_ID', null)
       this.resetForm()
     },
     changeDistrict() {
-      this.$store.commit('UPDATE_COMMUNE_ID', null)
-      this.$store.commit('UPDATE_VILLAGE_ID', null)
-      this.$store.commit('SET_COMMUNES', [])
-      this.$store.commit('SET_VILLAGES', [])
+      this.$store.commit('province/UPDATE_COMMUNE_ID', null)
+      this.$store.commit('province/UPDATE_VILLAGE_ID', null)
+      this.$store.commit('province/SET_COMMUNES', [])
+      this.$store.commit('province/SET_VILLAGES', [])
     },
     changeCommune() {
-      this.$store.commit('UPDATE_VILLAGE_ID', null)
-      this.$store.commit('SET_VILLAGES', [])
+      this.$store.commit('province/UPDATE_VILLAGE_ID', null)
+      this.$store.commit('province/SET_VILLAGES', [])
     },
   },
   async created() {
