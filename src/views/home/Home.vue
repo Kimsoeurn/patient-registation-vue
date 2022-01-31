@@ -1,12 +1,11 @@
 <template>
   <div class="home text-center">
     <home-content></home-content>
-    <language></language>
   </div>
 </template>
 
 <script>
-import HomeContent from '../components/HomeContent.vue'
+import HomeContent from './HomeContent.vue'
 
 export default {
   name: 'Home',

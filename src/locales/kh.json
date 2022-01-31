@@ -32,25 +32,59 @@
     "cancel": "បោះបង់",
     "go_back": "ត្រលប់ក្រោយ",
     "no_result": "គ្មានទិន្ន័យ...",
-    "actions": "សកម្មភាព"
+    "actions": "សកម្មភាព",
+    "yes": "បាទ/ចាស៎",
+    "no": "ទេ",
+    "page_not_found": "គ្មានទិន្ន័យ",
+    "do_you_want_delete": "តើអ្នកពិតជាចង់លុប"
   },
   "patients": {
     "patient_registration": "ទំរង់ចុះឈ្មោះអ្នកជំងឺ",
     "patient_info": "ពត័មានអ្នកជំងឺ",
     "health_id_card": "លេខប័ណ្ណ​សុខភាព",
-    "name_khmer": "ឈ្មោះ",
+    "name_khmer": "គោត្តនាម និងនាមខ្លួន",
     "name_english": "ឈ្មោះជាអក្សរឡាតាំង",
     "gender": "ភេទ",
-    "nationalilty": "ជនជាតិ",
+    "genders": {
+      "male": "ប្រុស",
+      "female": "ស្រី",
+      "undefined": ""
+    },
+    "date_of_birth": "ថ្ងៃខែឆ្នាំកំណើត",
+    "nationality": "ជនជាតិ",
     "occupation": "មុខរបរ",
     "other_id_card": "ប័ណ្ណសម្គាល់ផ្សេងៗ",
+    "mental_id_card": "ប័ណ្ណសម្គាល់ផ្សេងៗ",
     "phone_number": "លេខទូរស័ព្ទ",
     "is_disabled": "តើអ្នកពិការ?",
     "remark": "កត់ចំណាំ",
     "address": "អាសយដ្ឋាន",
     "province": "ខេត្ត",
-    "distrcit": "ស្រុក",
+    "district": "ស្រុក",
     "commune": "ឃុំ",
-    "village": "ភូមិ"
+    "village": "ភូមិ",
+    "detail": "ព័តមានលំអិត",
+    "table_patients": "តារាងអ្នកជំងឺ"
+  },
+  "nation" : {
+    "khmer": "ខ្មែរ",
+    "cham": "ចាម",
+    "other": "ផ្សេងៗ"
+  },
+  "occupations": {
+    "employee_in": "កម្មករនិយោគជិតក្នុងប្រព័ន្ធ (ប.ស.ស)",
+    "employee_out": "កម្មករនិយោជិតក្រៅប្រព័ន្ធ (មូលនិធិសមធម៍)",
+    "other": "ផ្សេងៗ"
+  },
+  "validations": {
+    "health_id_card_required": "សូមបំពេញលេខបណ្ណ័សុខភាព",
+    "name_khmer_required": "សូមបំពេញគោត្តនាម និងនាមខ្លួន",
+    "name_english_required": "សូមបំពេញឈ្មោះអក្សរឡាតាំង",
+    "gender_required": "សូមជ្រើសរើសភេទ",
+    "nationality_required": "សូមជ្រើសរើសជនជាតិ",
+    "date_of_birth_required": "សូមបំពេញថ្ងៃខែឆ្នាំកំណើត",
+    "occupation_required": "សូមជ្រើសរើសមុខរបរ",
+    "username_required": "សូមបំពេញអ៊ីមែល",
+    "password_required": "សូមបំពេញលេខសំម្ងាត់"
   }
 }
