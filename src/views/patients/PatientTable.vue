@@ -60,7 +60,6 @@ import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePagination
 import FieldsDef from './inc/FieldsDef'
 import cssConfig from './inc/CssBootsrap4'
 import Swal from 'sweetalert2'
-import { mapActions } from 'vuex'
 import TokenService from '../../services/TokenService'
 
 export default {
@@ -81,7 +80,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['deletePatient', 'fetchPatients']),
     onPaginationData(paginationData) {
       this.$refs.pagination.setPaginationData(paginationData)
       this.$refs.paginationInfo.setPaginationData(paginationData)
@@ -104,11 +102,15 @@ export default {
         cancelButtonColor: '#d33',
         cancelButtonText: `${this.$i18n.t('app.cancel')}`,
         confirmButtonText: `${this.$i18n.t('app.yes')}`,
-      }).then(async function (result) {
+      }).then(function (result) {
         if (result.isConfirmed) {
-          await me.deletePatient(id)
-          me.$refs.vuetable.refresh()
-          await Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+          me.$store
+            .dispatch('patient/deletePatient', id)
+            .then(() => {
+              me.$refs.vuetable.refresh()
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+            })
+            .catch((e) => console.log(e))
         }
       })
     },
