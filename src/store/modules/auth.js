@@ -1,5 +1,4 @@
 import TokenService from '../../services/TokenService'
-import http from '../../services/HttpConfig'
 import AuthService from '../../services/AuthService'
 
 const state = {
@@ -7,6 +6,7 @@ const state = {
   user: TokenService.getCurrentUser() || {},
   isAuthenticated: false,
   authError: false,
+  errors: [],
 }
 
 const getters = {
@@ -20,6 +20,7 @@ const getters = {
     return state.token
   },
   authError: (state) => state.authError,
+  errors: (state) => state.errors,
 }
 
 const mutations = {
@@ -48,16 +49,27 @@ const mutations = {
     state.user = {}
     TokenService.removeCurrentUser()
   },
+
+  SET_ERROR(state, errors) {
+    state.errors = errors
+  },
 }
 
 const actions = {
+  async register({ commit }, user) {
+    let response = await AuthService.register(user)
+    if (response.status === 200) {
+      commit('SET_TOKEN', response.data)
+      commit('SET_USER', response.data.user)
+    } else {
+      console.log('Register Fail')
+    }
+  },
+
   async login({ commit }, data) {
     let response = await AuthService.login(data)
     if (response.status === 200) {
       commit('SET_TOKEN', response.data)
-      http.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${response.data.access_token}`
     } else {
       console.log('Login fail')
     }
