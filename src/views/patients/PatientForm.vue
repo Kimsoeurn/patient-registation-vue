@@ -235,6 +235,10 @@ export default {
       errorMessages: 'patient/errorMessages',
       error404: 'patient/error404',
       getPatient: 'patient/getPatient',
+      province_id: 'province/province_id',
+      district_id: 'province/district_id',
+      commune_id: 'province/commune_id',
+      village_id: 'province/village_id',
     }),
   },
   data() {
