@@ -9,7 +9,9 @@ const instance = axios.create({
   },
 })
 
-instance.defaults.headers.common['Authorization'] =
-  'Bearer ' + TokenService.getToken()
+instance.interceptors.request.use(function (config) {
+  config.headers.common['Authorization'] = TokenService.getBearerToken()
+  return config
+})
 
 export default instance

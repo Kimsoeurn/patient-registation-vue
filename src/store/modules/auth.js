@@ -1,5 +1,4 @@
 import TokenService from '../../services/TokenService'
-import http from '../../services/HttpConfig'
 import AuthService from '../../services/AuthService'
 
 const state = {
@@ -55,9 +54,6 @@ const actions = {
     let response = await AuthService.login(data)
     if (response.status === 200) {
       commit('SET_TOKEN', response.data)
-      http.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${response.data.access_token}`
     } else {
       console.log('Login fail')
     }
