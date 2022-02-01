@@ -85,6 +85,12 @@
     "date_of_birth_required": "សូមបំពេញថ្ងៃខែឆ្នាំកំណើត",
     "occupation_required": "សូមជ្រើសរើសមុខរបរ",
     "username_required": "សូមបំពេញអ៊ីមែល",
-    "password_required": "សូមបំពេញលេខសំម្ងាត់"
+    "name_required": "សូមឈ្មោះ",
+    "email_required": "សូមបំពេញអ៊ីមែល",
+    "email_invalid": "អ៊ីមែលមិនត្រឹមត្រូវ",
+    "password_not_same": "លេខសំម្ងាត់បញ្ជាក់មិនត្រឹមត្រូវ",
+    "password_required": "សូមបំពេញលេខសំម្ងាត់",
+    "password_confirm_required": "សូមបំពេញលេខសំម្ងាត់បញ្ជាក់",
+    "password_min_length": "លេខសំម្ងាត់យ៉ាងតិច៦ខ្ទង់"
   }
 }

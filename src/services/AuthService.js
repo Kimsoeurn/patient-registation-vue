@@ -12,6 +12,10 @@ class AuthService {
   profile() {
     return http.get('user')
   }
+
+  register(user) {
+    return http.post('register', user)
+  }
 }
 
 export default new AuthService()
